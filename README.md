@@ -2,6 +2,16 @@ PHP Object Mapper
 =================
 TODO.
 
+Installation
+============
+To install php-enumerators, simply require the library by executing the following composer command.
+
+```
+$ composer require cascademedia/php-object-mapper @stable
+```
+
+Alternatively, you can clone/download this repository and install the package manually.
+
 License
 =======
 This library is MIT licensed, meaning it is free for anyone to use and modify.

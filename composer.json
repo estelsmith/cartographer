@@ -1,0 +1,12 @@
+{
+    "name": "cascademedia/php-object-mapper",
+    "description": "A simple and configurable library that allows mapping to and from arrays.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Estel Smith",
+            "email": "estel.smith@gmail.com"
+        }
+    ]
+}
