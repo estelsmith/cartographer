@@ -4,7 +4,7 @@ TODO.
 
 Installation
 ============
-To install php-enumerators, simply require the library by executing the following composer command.
+To install php-object-mapper, simply require the library by executing the following composer command.
 
 ```
 $ composer require cascademedia/php-object-mapper @stable
