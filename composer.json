@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Cascade\\": "src"
+            "Cascade\\Mapper\\": "src"
         }
     },
     "config": {
