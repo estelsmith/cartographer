@@ -19,7 +19,7 @@ class Mapper implements MapperInterface
         $newDestination = $destination;
 
         foreach ($mappings as $mapping) {
-            $newDestination = $this->visitMapping($mapping, $destination, $source);
+            $newDestination = $this->visitMapping($mapping, $newDestination, $source);
         }
 
         return $newDestination;
