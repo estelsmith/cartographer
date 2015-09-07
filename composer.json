@@ -17,6 +17,9 @@
     "config": {
         "bin-dir": "bin"
     },
+    "require": {
+        "doctrine/inflector": "~1.0"
+    },
     "require-dev": {
         "phpunit/phpunit": "~4.8"
     }
