@@ -7,8 +7,11 @@ use Cascade\Mapper\Field\Reference\MutatorReference;
 use Cascade\Mapper\Field\Reference\PropertyReference;
 use Cascade\Mapper\Field\Reference\ReferenceInterface;
 use Cascade\Mapper\Map\Exception\InvalidReferenceTypeException;
+use Cascade\Mapper\Mapping\EmbeddedMapping;
 use Cascade\Mapper\Mapping\Mapping;
 use Cascade\Mapper\Mapping\MappingInterface;
+use Cascade\Mapper\Mapping\ResolverMapping;
+use Cascade\Mapper\Value\Resolver\ValueResolverInterface;
 
 class Map implements MapInterface
 {
@@ -82,8 +85,20 @@ class Map implements MapInterface
         $destinationReference = $this->resolveToRef($toField);
         $sourceReference = $this->resolveFromRef($fromField);
 
-        $this->mappings[] = new Mapping($destinationReference, $sourceReference);
+        $this->addMapping(new Mapping($destinationReference, $sourceReference));
 
+        return $this;
+    }
+
+    public function addEmbedded($fromField, MapInterface $map)
+    {
+        $this->addMapping(new EmbeddedMapping($this->resolveFromRef($fromField), $map));
+        return $this;
+    }
+
+    public function addResolver($toField, ValueResolverInterface $resolver)
+    {
+        $this->addMapping(new ResolverMapping($this->resolveToRef($toField), $resolver));
         return $this;
     }
 
