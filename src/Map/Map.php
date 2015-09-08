@@ -73,14 +73,14 @@ class Map implements MapInterface
     }
 
     /**
-     * @param string $fromField
      * @param string $toField
+     * @param string $fromField
      * @return $this
      */
-    public function add($fromField, $toField)
+    public function add($toField, $fromField)
     {
-        $destinationReference = $this->referenceField($this->to, $toField);
-        $sourceReference = $this->referenceField($this->from, $fromField);
+        $destinationReference = $this->resolveToRef($toField);
+        $sourceReference = $this->resolveFromRef($fromField);
 
         $this->mappings[] = new Mapping($destinationReference, $sourceReference);
 
@@ -95,6 +95,24 @@ class Map implements MapInterface
     {
         $this->mappings[] = $mapping;
         return $this;
+    }
+
+    /**
+     * @param string $field
+     * @return ReferenceInterface
+     */
+    protected function resolveFromRef($field)
+    {
+        return $this->referenceField($this->from, $field);
+    }
+
+    /**
+     * @param string $field
+     * @return ReferenceInterface
+     */
+    protected function resolveToRef($field)
+    {
+        return $this->referenceField($this->to, $field);
     }
 
     /**
