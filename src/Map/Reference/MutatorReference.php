@@ -2,8 +2,6 @@
 
 namespace Cascade\Mapper\Map\Reference;
 
-use Doctrine\Common\Inflector\Inflector;
-
 class MutatorReference implements ReferenceInterface
 {
     /**
@@ -23,8 +21,8 @@ class MutatorReference implements ReferenceInterface
      */
     public function __construct($field, $getter = null, $setter = null)
     {
-        $this->getter = $getter ?: 'get' . Inflector::classify($field);
-        $this->setter = $setter ?: 'set' . Inflector::classify($field);
+        $this->getter = $getter ?: 'get' . $this->classify($field);
+        $this->setter = $setter ?: 'set' . $this->classify($field);
     }
 
     public function getValue($instance)
@@ -43,5 +41,10 @@ class MutatorReference implements ReferenceInterface
         (new \ReflectionMethod($className, $setter))->invoke($instance, $value);
 
         return $instance;
+    }
+
+    private function classify($word)
+    {
+        return str_replace(' ', '', ucwords(strtr($word, '_-', '  ')));
     }
 }
