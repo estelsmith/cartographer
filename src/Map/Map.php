@@ -6,6 +6,7 @@ use Cascade\Mapper\Field\Reference\ArrayReference;
 use Cascade\Mapper\Field\Reference\MutatorReference;
 use Cascade\Mapper\Field\Reference\PropertyReference;
 use Cascade\Mapper\Field\Reference\ReferenceInterface;
+use Cascade\Mapper\Map\Exception\InvalidReferenceTypeException;
 use Cascade\Mapper\Mapping\Mapping;
 use Cascade\Mapper\Mapping\MappingInterface;
 
@@ -46,8 +47,10 @@ class Map implements MapInterface
             return $this;
         }
 
-        // @TODO: Throw Invalid From exception.
-        return $this;
+        throw new InvalidReferenceTypeException(sprintf(
+            'Reference type "%s" is not valid',
+            $from
+        ));
     }
 
     /**
@@ -61,8 +64,10 @@ class Map implements MapInterface
             return $this;
         }
 
-        // @TODO: Throw Invalid To exception.
-        return $this;
+        throw new InvalidReferenceTypeException(sprintf(
+            'Reference type "%s" is not valid',
+            $to
+        ));
     }
 
     /**
