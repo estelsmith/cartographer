@@ -1,13 +1,13 @@
 <?php
 
-namespace Cascade\Mapper;
+namespace Cascade\Mapper\Map;
 
-use Cascade\Mapper\Map\Mapping;
-use Cascade\Mapper\Map\MappingInterface;
-use Cascade\Mapper\Map\Reference\ArrayReference;
-use Cascade\Mapper\Map\Reference\MutatorReference;
-use Cascade\Mapper\Map\Reference\PropertyReference;
-use Cascade\Mapper\Map\Reference\ReferenceInterface;
+use Cascade\Mapper\Field\Reference\ArrayReference;
+use Cascade\Mapper\Field\Reference\MutatorReference;
+use Cascade\Mapper\Field\Reference\PropertyReference;
+use Cascade\Mapper\Field\Reference\ReferenceInterface;
+use Cascade\Mapper\Mapping\Mapping;
+use Cascade\Mapper\Mapping\MappingInterface;
 
 class Map implements MapInterface
 {

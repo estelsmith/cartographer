@@ -1,6 +1,6 @@
 <?php
 
-namespace Cascade\Mapper\Map;
+namespace Cascade\Mapper\Mapping;
 
 interface MappingInterface
 {

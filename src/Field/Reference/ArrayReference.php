@@ -1,6 +1,6 @@
 <?php
 
-namespace Cascade\Mapper\Map\Reference;
+namespace Cascade\Mapper\Field\Reference;
 
 class ArrayReference implements ReferenceInterface
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Cascade\Mapper\Map;
+namespace Cascade\Mapper\Mapping;
 
-use Cascade\Mapper\Map\Reference\ReferenceInterface;
+use Cascade\Mapper\Field\Reference\ReferenceInterface;
 
 class Mapping implements MappingInterface
 {

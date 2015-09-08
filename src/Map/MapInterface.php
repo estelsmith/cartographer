@@ -1,8 +1,8 @@
 <?php
 
-namespace Cascade\Mapper;
+namespace Cascade\Mapper\Map;
 
-use Cascade\Mapper\Map\MappingInterface;
+use Cascade\Mapper\Mapping\MappingInterface;
 
 interface MapInterface
 {

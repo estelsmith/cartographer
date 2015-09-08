@@ -2,7 +2,7 @@
 
 namespace Cascade\Mapper\Context;
 
-use Cascade\Mapper\MapInterface;
+use Cascade\Mapper\Map\MapInterface;
 
 interface ContextInterface
 {

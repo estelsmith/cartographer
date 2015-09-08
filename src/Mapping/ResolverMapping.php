@@ -1,9 +1,9 @@
 <?php
 
-namespace Cascade\Mapper\Map;
+namespace Cascade\Mapper\Mapping;
 
-use Cascade\Mapper\Map\Reference\ReferenceInterface;
-use Cascade\Mapper\Map\Resolver\ValueResolverInterface;
+use Cascade\Mapper\Field\Reference\ReferenceInterface;
+use Cascade\Mapper\Value\Resolver\ValueResolverInterface;
 
 class ResolverMapping implements MappingInterface
 {

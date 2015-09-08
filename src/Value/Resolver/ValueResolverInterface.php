@@ -1,6 +1,6 @@
 <?php
 
-namespace Cascade\Mapper\Map\Resolver;
+namespace Cascade\Mapper\Value\Resolver;
 
 interface ValueResolverInterface
 {

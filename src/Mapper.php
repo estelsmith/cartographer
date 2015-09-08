@@ -3,7 +3,8 @@
 namespace Cascade\Mapper;
 
 use Cascade\Mapper\Context\ContextInterface;
-use Cascade\Mapper\Map\MappingInterface;
+use Cascade\Mapper\Map\MapInterface;
+use Cascade\Mapper\Mapping\MappingInterface;
 
 class Mapper implements MapperInterface
 {
