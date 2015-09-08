@@ -39,6 +39,7 @@ class Map implements MapInterface
     /**
      * @param string $from
      * @return $this
+     * @throws InvalidReferenceTypeException
      */
     public function from($from)
     {
@@ -56,6 +57,7 @@ class Map implements MapInterface
     /**
      * @param string $to
      * @return $this
+     * @throws InvalidReferenceTypeException
      */
     public function to($to)
     {
