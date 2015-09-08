@@ -7,64 +7,40 @@ use Doctrine\Common\Inflector\Inflector;
 class MutatorReference implements ReferenceInterface
 {
     /**
-     * @var \ReflectionClass
-     */
-    private $class;
-
-    /**
-     * @var \ReflectionMethod
+     * @var string
      */
     private $getter;
 
     /**
-     * @var \ReflectionMethod
+     * @var string
      */
     private $setter;
 
     /**
-     * @param string $class
      * @param string $field
-     * @param null|string $getterMethod
-     * @param null|string $setterMethod
-     * @TODO: Remove class reference in favor of using ReflectionMethod directly in get/set methods.
+     * @param null|string $getter
+     * @param null|string $setter
      */
-    public function __construct($class, $field, $getterMethod = null, $setterMethod = null)
+    public function __construct($field, $getter = null, $setter = null)
     {
-        $this->class = $reflectedClass = new \ReflectionClass($class);
-
-        $getter = $getterMethod ?: 'get' . Inflector::classify($field);
-        $setter = $setterMethod ?: 'set' . Inflector::classify($field);
-
-        $this->getter = $reflectedClass->getMethod($getter);
-        $this->setter = $reflectedClass->getMethod($setter);
+        $this->getter = $getter ?: 'get' . Inflector::classify($field);
+        $this->setter = $setter ?: 'set' . Inflector::classify($field);
     }
 
     public function getValue($instance)
     {
-        $class = $this->class;
         $getter = $this->getter;
+        $className = get_class($instance);
 
-        $className = $class->getName();
-
-        if (!is_subclass_of($instance, $className)) {
-            // @TODO: Throw invalid instance exception.
-        }
-
-        return $getter->invoke($instance);
+        return (new \ReflectionMethod($className, $getter))->invoke($instance);
     }
 
     public function setValue($instance, $value)
     {
-        $class = $this->class;
         $setter = $this->setter;
+        $className = get_class($instance);
 
-        $className = $class->getName();
-
-        if (!is_subclass_of($instance, $className)) {
-            // @TODO: Throw invalid instance exception.
-        }
-
-        $setter->invoke($instance, $value);
+        (new \ReflectionMethod($className, $setter))->invoke($instance, $value);
 
         return $instance;
     }
