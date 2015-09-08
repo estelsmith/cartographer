@@ -11,9 +11,9 @@ use Cascade\Mapper\Mapping\MappingInterface;
 
 class Map implements MapInterface
 {
-    const REF_ARRAY = 'ref_array';
-    const REF_CLASS_PROPERTIES = 'ref_class_properties';
-    const REF_CLASS_MUTATORS = 'ref_class_mutators';
+    const REF_ARRAY = 'REF_ARRAY';
+    const REF_CLASS_PROPERTIES = 'REF_CLASS_PROPERTIES';
+    const REF_CLASS_MUTATORS = 'REF_CLASS_MUTATORS';
 
     /**
      * @var string
