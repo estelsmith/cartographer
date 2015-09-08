@@ -17,6 +17,7 @@ class PropertyReference implements ReferenceInterface
     /**
      * @param string $class
      * @param string $property
+     * @TODO: Remove class reference in favor of using ReflectionProperty directly in get/set methods.
      */
     public function __construct($class, $property)
     {

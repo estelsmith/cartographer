@@ -26,6 +26,7 @@ class MutatorReference implements ReferenceInterface
      * @param string $field
      * @param null|string $getterMethod
      * @param null|string $setterMethod
+     * @TODO: Remove class reference in favor of using ReflectionMethod directly in get/set methods.
      */
     public function __construct($class, $field, $getterMethod = null, $setterMethod = null)
     {

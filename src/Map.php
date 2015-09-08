@@ -4,6 +4,9 @@ namespace Cascade\Mapper;
 
 use Cascade\Mapper\Map\MappingInterface;
 
+/**
+ * @TODO: Add fluent interface for building mappings in favor of passing mappings into the constructor.
+ */
 class Map implements MapInterface
 {
     /**
