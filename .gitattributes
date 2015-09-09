@@ -2,3 +2,4 @@
 *.md eol=lf
 *.php eol=lf
 *.json eol=lf
+*.xml eol=lf
