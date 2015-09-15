@@ -155,13 +155,10 @@ class Map implements MapInterface
         switch ($refType) {
             case self::REF_CLASS_PROPERTIES:
                 return new PropertyReference($field);
-                break;
             case self::REF_CLASS_MUTATORS:
                 return new MutatorReference($field);
-                break;
             default:
                 return new ArrayReference($field);
-                break;
         }
     }
 }
