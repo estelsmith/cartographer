@@ -7,6 +7,9 @@ filter:
     paths: [src/*]
 
 build:
+    environment:
+        php:
+            version: 5.5.25
     tests:
         override:
             -
