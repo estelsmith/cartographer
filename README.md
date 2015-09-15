@@ -2,8 +2,8 @@ PHP Object Mapper
 =================
 TODO.
 
-[![Build Status](https://travis-ci.org/cascademedia/php-object-mapper.svg?branch=master)](https://travis-ci.org/cascademedia/php-object-mapper)
-[![Coverage Status](https://coveralls.io/repos/cascademedia/php-object-mapper/badge.svg?branch=master&service=github)](https://coveralls.io/github/cascademedia/php-object-mapper?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/badges/build.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/?branch=master)
 
 Installation
