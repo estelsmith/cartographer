@@ -46,7 +46,7 @@ class Map implements MapInterface
      */
     public function from($from)
     {
-        return $this->setReference('from', $from);
+        return $this->setReferenceType('from', $from);
     }
 
     /**
@@ -56,7 +56,7 @@ class Map implements MapInterface
      */
     public function to($to)
     {
-        return $this->setReference('to', $to);
+        return $this->setReferenceType('to', $to);
     }
 
     /**
@@ -102,7 +102,7 @@ class Map implements MapInterface
      */
     protected function resolveFromRef($field)
     {
-        return $this->referenceField($this->from, $field);
+        return $this->resolveFieldReference($this->from, $field);
     }
 
     /**
@@ -111,18 +111,18 @@ class Map implements MapInterface
      */
     protected function resolveToRef($field)
     {
-        return $this->referenceField($this->to, $field);
+        return $this->resolveFieldReference($this->to, $field);
     }
 
     /**
-     * @param string $refType
+     * @param string $referenceType
      * @return bool
      */
-    private function isValidRefType($refType)
+    private function isValidReferenceType($referenceType)
     {
-        $validRefTypes = [self::REF_ARRAY, self::REF_CLASS_PROPERTIES, self::REF_CLASS_MUTATORS];
+        $validReferenceTypes = [self::REF_ARRAY, self::REF_CLASS_PROPERTIES, self::REF_CLASS_MUTATORS];
 
-        if (in_array($refType, $validRefTypes, true)) {
+        if (in_array($referenceType, $validReferenceTypes, true)) {
             return true;
         }
 
@@ -134,7 +134,7 @@ class Map implements MapInterface
      * @param string $field
      * @return ReferenceInterface
      */
-    private function referenceField($refType, $field)
+    private function resolveFieldReference($refType, $field)
     {
         switch ($refType) {
             case self::REF_CLASS_PROPERTIES:
@@ -152,9 +152,9 @@ class Map implements MapInterface
      * @return $this
      * @throws InvalidReferenceTypeException
      */
-    private function setReference($target, $reference)
+    private function setReferenceType($target, $reference)
     {
-        if ($this->isValidRefType($reference)) {
+        if ($this->isValidReferenceType($reference)) {
             $this->{$target} = $reference;
             return $this;
         }
