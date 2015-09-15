@@ -46,15 +46,7 @@ class Map implements MapInterface
      */
     public function from($from)
     {
-        if ($this->isValidRefType($from)) {
-            $this->from = $from;
-            return $this;
-        }
-
-        throw new InvalidReferenceTypeException(sprintf(
-            'Reference type "%s" is not valid',
-            $from
-        ));
+        return $this->setReference('from', $from);
     }
 
     /**
@@ -64,15 +56,7 @@ class Map implements MapInterface
      */
     public function to($to)
     {
-        if ($this->isValidRefType($to)) {
-            $this->to = $to;
-            return $this;
-        }
-
-        throw new InvalidReferenceTypeException(sprintf(
-            'Reference type "%s" is not valid',
-            $to
-        ));
+        return $this->setReference('to', $to);
     }
 
     /**
@@ -160,5 +144,24 @@ class Map implements MapInterface
             default:
                 return new ArrayReference($field);
         }
+    }
+
+    /**
+     * @param string $target
+     * @param string $reference
+     * @return $this
+     * @throws InvalidReferenceTypeException
+     */
+    private function setReference($target, $reference)
+    {
+        if ($this->isValidRefType($reference)) {
+            $this->{$target} = $reference;
+            return $this;
+        }
+
+        throw new InvalidReferenceTypeException(sprintf(
+            'Reference type "%s" is not valid',
+            $reference
+        ));
     }
 }
