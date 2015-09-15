@@ -2,6 +2,9 @@ PHP Object Mapper
 =================
 TODO.
 
+[![Build Status](https://travis-ci.org/cascademedia/php-object-mapper.svg?branch=master)](https://travis-ci.org/cascademedia/php-object-mapper)
+[![Coverage Status](https://coveralls.io/repos/cascademedia/php-object-mapper/badge.svg?branch=master&service=github)](https://coveralls.io/github/cascademedia/php-object-mapper?branch=master)
+
 Installation
 ============
 To install php-object-mapper, simply require the library by executing the following composer command.
