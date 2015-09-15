@@ -12,7 +12,4 @@ install:
 script:
     - mkdir -p build/logs
     - phpcs --standard=psr2 src
-    - bin/phpunit --coverage-clover build/logs/clover.xml
-
-after_script:
-    - bin/coveralls
+    - bin/phpunit --coverage-text
