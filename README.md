@@ -251,7 +251,6 @@ $user->lastName = 'Test Last';
 
 var_dump($reference->getValue($user));
 // string(10) "Test First"
-*/
 ```
 
 The ```setValue()``` method will put data into the referenced object property.
@@ -264,6 +263,7 @@ class User#3 (2) {
   public $lastName =>
   string(9) "Test Last"
 }
+*/
 ```
 
 Mappings
