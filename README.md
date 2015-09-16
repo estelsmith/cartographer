@@ -164,6 +164,9 @@ default, this reference will attempt to use getters and setters of the named fie
 field named ```test``` will call ```getTest()``` and ```setTest()``` respectively, but can be configured to call other
 methods if necessary.
 
+Note that only public methods can be accessed. Accessing private and protected methods will result in a
+```ReflectionException``` being thrown.
+
 The ```getValue()``` method will call the configured getter method for the given object and return its result.
 ```php
 class User
@@ -227,7 +230,41 @@ $reference = new MutatorReference('first_name', 'retrieveFirstName', 'addFirstNa
 
 Property References
 -------------------
-TODO.
+The ```PropertyReference``` class tells the mapper that you wish to access data contained within a class' public
+property. Note that only public properties can be accessed. Accessing private and protected properties will result in
+a ```ReflectionException``` being thrown.
+
+The ```getValue()``` method will return the data contained in the referenced object property.
+```php
+class User
+{
+    public $firstName;
+
+    public $lastName;
+}
+
+$reference = new PropertyReference('firstName');
+
+$user = new User();
+$user->firstName = 'Test First';
+$user->lastName = 'Test Last';
+
+var_dump($reference->getValue($user));
+// string(10) "Test First"
+*/
+```
+
+The ```setValue()``` method will put data into the referenced object property.
+```php
+var_dump($reference->setValue($user, 'Another Test First'));
+/*
+class User#3 (2) {
+  public $firstName =>
+  string(18) "Another Test First"
+  public $lastName =>
+  string(9) "Test Last"
+}
+```
 
 Mappings
 ========
