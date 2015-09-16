@@ -20,7 +20,44 @@ Basic Usage
 ===========
 Array-to-Array
 --------------
-TODO.
+```php
+class MyContext implements ContextInterface
+{
+    public function getMap()
+    {
+        return (new Map())
+            ->from(Map::REF_ARRAY)
+            ->to(Map::REF_ARRAY)
+            ->add('first_name', 'fname')
+            ->add('last_name', 'lname')
+        ;
+    }
+}
+
+$originalDestination = [
+    'first_name' => 'TBD',
+    'last_name' => 'TBD'
+];
+
+$source = [
+    'fname' => 'Test First',
+    'lname' => 'Test Last'
+];
+
+$mapper = new Mapper();
+$context = new MyContext();
+
+$updatedDestination = $mapper->map($originalDestination, $source, $context);
+var_dump($updatedDestination);
+/*
+array(2) {
+  'first_name' =>
+  string(10) "Test First"
+  'last_name' =>
+  string(9) "Test Last"
+}
+*/
+```
 
 Array-to-Object
 ---------------
