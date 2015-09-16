@@ -125,6 +125,8 @@ References
 References are classes used by the mapper to to retrieve or store field data in an object or array. The mapper currently
 supports array, object mutator, and object property references.
 
+Reference classes are not typically used directly unless you are manually creating field mappings.
+
 Array References
 ----------------
 The ```ArrayReference``` class tells the mapper that you wish to access data contained within the top level of an
