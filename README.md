@@ -146,13 +146,6 @@ var_dump($reference->getValue($data));
 The ```setValue()``` method allows users to put data into any given array. Note that this method returns a copy of the
 modified array and does not modify the original array passed into it.
 ```php
-$reference = new ArrayReference('first_name');
-
-$data = [
-    'first_name' => 'Test First',
-    'last_name' => 'Test Last'
-];
-
 var_dump($reference->setValue($data, 'Another Test First'));
 /*
 array(2) {
@@ -215,42 +208,6 @@ var_dump($reference->getValue($user));
 
 The ```setValue()``` method will call the configured setter method for the given object.
 ```php
-class User
-{
-    private $firstName;
-
-    private $lastName;
-
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-        return $this;
-    }
-
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-        return $this;
-    }
-}
-
-$reference = new MutatorReference('first_name');
-
-$user = (new User())
-    ->setFirstName('Test First')
-    ->setLastName('Test Last')
-;
-
 var_dump($reference->setValue($user, 'Another Test First'));
 /*
 class User#3 (2) {
