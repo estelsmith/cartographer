@@ -1,6 +1,6 @@
 PHP Object Mapper
 =================
-TODO.
+The php-object-mapper library provides the ability to transform data from one type into another type.
 
 [![Build Status](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/badges/build.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/build-status/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/?branch=master)
@@ -15,6 +15,60 @@ $ composer require cascademedia/php-object-mapper @stable
 ```
 
 Alternatively, you can clone/download this repository and install the package manually.
+
+Basic Usage
+===========
+Array-to-Array
+--------------
+TODO.
+
+Array-to-Object
+---------------
+TODO.
+
+Object-to-Object
+----------------
+TODO.
+
+Object-to-Array
+---------------
+TODO.
+
+References
+==========
+Array References
+----------------
+TODO.
+
+Mutator References
+------------------
+TODO.
+
+Property References
+-------------------
+TODO.
+
+Mappings
+========
+Mapping
+-------
+TODO.
+
+Embedded Mapping
+----------------
+TODO.
+
+Resolver Mapping
+----------------
+TODO.
+
+Value Resolvers
+===============
+TODO.
+
+Want to contribute?
+===================
+TODO.
 
 License
 =======
