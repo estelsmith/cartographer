@@ -127,7 +127,7 @@ supports array, object mutator, and object property references.
 
 Array References
 ----------------
-The ```ArrayReference``` object tells the mapper that you wish to access data contained within the top level of an
+The ```ArrayReference``` class tells the mapper that you wish to access data contained within the top level of an
 array.
 
 The ```getValue()``` method allows users to retrieve data from any given array.
@@ -166,7 +166,101 @@ array(2) {
 
 Mutator References
 ------------------
-TODO.
+The ```MutatorReference``` class tells the mapper that you wish to access data returned from a class' method call. By
+default, this reference will attempt to reference getters and setters of the named field. For example, referencing a
+field named ```test``` will call ```getTest()``` and ```setTest()``` respectively, but can be configured to call other
+methods if necessary.
+
+The ```getValue()``` method will call the configured getter method for the given object and return its result.
+```php
+class User
+{
+    private $firstName;
+
+    private $lastName;
+
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
+
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+        return $this;
+    }
+}
+
+$reference = new MutatorReference('first_name');
+
+$user = (new User())
+    ->setFirstName('Test First')
+    ->setLastName('Test Last')
+;
+
+var_dump($reference->getValue($user));
+// string(10) "Test First"
+```
+
+The ```setValue()``` method will call the configured setter method for the given object.
+```php
+class User
+{
+    private $firstName;
+
+    private $lastName;
+
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
+
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+        return $this;
+    }
+}
+
+$reference = new MutatorReference('first_name');
+
+$user = (new User())
+    ->setFirstName('Test First')
+    ->setLastName('Test Last')
+;
+
+var_dump($reference->setValue($user, 'Another Test First'));
+/*
+class User#3 (2) {
+  private $firstName =>
+  string(18) "Another Test First"
+  private $lastName =>
+  string(9) "Test Last"
+}
+*/
+```
 
 Property References
 -------------------
