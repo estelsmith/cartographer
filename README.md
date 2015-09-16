@@ -118,9 +118,47 @@ TODO.
 
 References
 ==========
+References are objects used by the mapper to to retrieve or store field data in an object or array. The mapper currently
+supports array, object mutator, and object property references.
+
 Array References
 ----------------
-TODO.
+The ```ArrayReference``` object tells the mapper that you wish to access data contained within the top level of an
+array.
+
+The ```getValue()``` method allows users to retrieve data from any given array.
+```php
+$reference = new ArrayReference('first_name');
+
+$data = [
+    'first_name' => 'Test First',
+    'last_name' => 'Test Last'
+];
+
+var_dump($reference->getValue($data));
+// string(10) "Test First"
+```
+
+The ```setValue()``` method allows users to put data into any given array. Note that this method returns a copy of the
+modified array and does not modify the original array passed into it.
+```php
+$reference = new ArrayReference('first_name');
+
+$data = [
+    'first_name' => 'Test First',
+    'last_name' => 'Test Last'
+];
+
+var_dump($reference->setValue($data, 'Another Test First'));
+/*
+array(2) {
+  'first_name' =>
+  string(18) "Another Test First"
+  'last_name' =>
+  string(9) "Test Last"
+}
+*/
+```
 
 Mutator References
 ------------------
