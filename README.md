@@ -118,7 +118,44 @@ TODO.
 
 Contexts
 ========
-TODO.
+Contexts are classes that contain all of the rules used for an individual ```Mapper::map()``` operation. When using the
+mapper, it is required to contain mapping rules within a context.
+
+To create a context, create a class that implements ```ContextInterface``` and use ```getMap()``` to return a map
+containing all rules desired for that particular map operation.
+
+```php
+class MyContext implements ContextInterface
+{
+    public function getMap()
+    {
+        return (new Map())
+            ->from(Map::REF_ARRAY)
+            ->to(Map::REF_ARRAY)
+            ->add('first_name', 'fname')
+            ->add('last_name', 'lname')
+        ;
+    }
+}
+
+$source = [
+    'fname' => 'Test First',
+    'lname' => 'Test Last'
+];
+
+$mapper = new Mapper();
+
+$result = $mapper->map([], $source, new MyContext());
+var_dump($result);
+/*
+array(2) {
+  'first_name' =>
+  string(10) "Test First"
+  'last_name' =>
+  string(9) "Test Last"
+}
+*/
+```
 
 References
 ==========
