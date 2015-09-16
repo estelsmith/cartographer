@@ -122,7 +122,7 @@ Contexts are classes that contain all of the rules used for an individual ```Map
 mapper, it is required to contain mapping rules within a context.
 
 To create a context, create a class that implements ```ContextInterface``` and use ```getMap()``` to return a map
-containing all rules desired for that particular map operation.
+containing all mapping rules desired.
 
 ```php
 class MyContext implements ContextInterface
