@@ -122,7 +122,7 @@ TODO.
 
 References
 ==========
-References are objects used by the mapper to to retrieve or store field data in an object or array. The mapper currently
+References are classes used by the mapper to to retrieve or store field data in an object or array. The mapper currently
 supports array, object mutator, and object property references.
 
 Array References
@@ -160,7 +160,7 @@ array(2) {
 Mutator References
 ------------------
 The ```MutatorReference``` class tells the mapper that you wish to access data returned from a class' method call. By
-default, this reference will attempt to reference getters and setters of the named field. For example, referencing a
+default, this reference will attempt to use getters and setters of the named field. For example, referencing a
 field named ```test``` will call ```getTest()``` and ```setTest()``` respectively, but can be configured to call other
 methods if necessary.
 
@@ -217,6 +217,12 @@ class User#3 (2) {
   string(9) "Test Last"
 }
 */
+```
+
+If the default getters and setters are not satisfactory, you can change the methods that are called via the reference's
+constructor.
+```php
+$reference = new MutatorReference('first_name', 'retrieveFirstName', 'addFirstName');
 ```
 
 Property References
