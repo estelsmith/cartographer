@@ -61,7 +61,48 @@ array(2) {
 
 Array-to-Object
 ---------------
-TODO.
+```php
+class User
+{
+    public $firstName;
+
+    public $lastName;
+}
+
+class MyContext implements ContextInterface
+{
+    public function getMap()
+    {
+        return (new Map())
+            ->from(Map::REF_ARRAY)
+            ->to(Map::REF_CLASS_PROPERTIES)
+            ->add('firstName', 'fname')
+            ->add('lastName', 'lname')
+        ;
+    }
+}
+
+$destination = new User();
+
+$source = [
+    'fname' => 'Test First',
+    'lname' => 'Test Last'
+];
+
+$mapper = new Mapper();
+$context = new MyContext();
+
+$mapper->map($destination, $source, $context);
+var_dump($destination);
+/*
+class User#2 (2) {
+  public $firstName =>
+  string(10) "Test First"
+  public $lastName =>
+  string(9) "Test Last"
+}
+*/
+```
 
 Object-to-Object
 ----------------
