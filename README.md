@@ -321,7 +321,28 @@ TODO.
 
 Value Resolvers
 ===============
-TODO.
+A value resolver is an object that will take the entire source object and return an individual value from it. Using a
+value resolver allows for arbitrary logic in order to map a value.
+
+```php
+class FullNameResolver implements ValueResolverInterface
+{
+    public function resolve($source)
+    {
+        return $source['fname'] . ' ' . $source['lname'];
+    }
+}
+
+$source = [
+    'fname' => 'First',
+    'lname' => 'Last'
+];
+
+$resolver = new FullNameResolver();
+$result = $resolver->resolve($source);
+var_dump($result);
+// string(10) "First Last"
+```
 
 Want to contribute?
 ===================
