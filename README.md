@@ -250,9 +250,32 @@ class User#3 (2) {
 
 Mappings
 ========
+Mapping classes are the workhorse of the mapper library. They are the classes that map individual pieces of data using
+references to determine where the data comes from and where it goes.
+
 Mapping
 -------
-TODO.
+The ```Mapping``` class is the most straightforward of all mappings. It simply takes the source and maps it directly to
+the configured destination. When constructing the ```Mapping``` class, the destination reference comes first followed
+by the source reference.
+
+```php
+$source = [
+    'fname' => 'First',
+    'lname' => 'Last'
+];
+
+$mapping = new Mapping(new ArrayReference('first_name'), new ArrayReference('fname'));
+
+$result = $mapping->map([], $source);
+var_dump($result);
+/*
+array(1) {
+  'first_name' =>
+  string(5) "First"
+}
+*/
+```
 
 Embedded Mapping
 ----------------
