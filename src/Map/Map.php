@@ -74,12 +74,22 @@ class Map implements MapInterface
         return $this;
     }
 
+    /**
+     * @param $fromField
+     * @param MapInterface $map
+     * @return $this
+     */
     public function addEmbedded($fromField, MapInterface $map)
     {
         $this->addMapping(new EmbeddedMapping($this->resolveFromRef($fromField), $map));
         return $this;
     }
 
+    /**
+     * @param $toField
+     * @param ValueResolverInterface $resolver
+     * @return $this
+     */
     public function addResolver($toField, ValueResolverInterface $resolver)
     {
         $this->addMapping(new ResolverMapping($this->resolveToRef($toField), $resolver));
