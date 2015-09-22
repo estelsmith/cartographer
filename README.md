@@ -265,10 +265,12 @@ $source = [
     'lname' => 'Last'
 ];
 
+$destination = [];
+
 $mapping = new Mapping(new ArrayReference('first_name'), new ArrayReference('fname'));
 
-$result = $mapping->map([], $source);
-var_dump($result);
+$destination = $mapping->map($destination, $source);
+var_dump($destination);
 /*
 array(1) {
   'first_name' =>
