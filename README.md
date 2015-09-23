@@ -18,42 +18,53 @@ Alternatively, you can clone/download this repository and install the package ma
 
 Basic Usage
 ===========
-TODO.
+There are three basic parts to the library: the mapper, mappings, and contexts. A context object exists to contain rules
+for an individual mapping use-case, for example: mapping user input to a data object or mapping an entity to a view
+model. A mapping object is effectively a rule that determines how data is mapped from one field to another within a
+given context. Finally, the mapper ties it all together and ensures that the proper mappings are executed from the
+source data to the destination.
+
+Without further introduction, here is a simple example that maps from an input array to a User class. For more advanced
+usage, feel free to browse around the documentation.
 
 ```php
+class User
+{
+    public $firstName;
+
+    public $lastName;
+}
+
 class MyContext implements ContextInterface
 {
     public function getMap()
     {
         return (new Map())
             ->from(Map::REF_ARRAY)
-            ->to(Map::REF_ARRAY)
-            ->add('first_name', 'fname')
-            ->add('last_name', 'lname')
+            ->to(Map::REF_CLASS_PROPERTIES)
+            ->add('firstName', 'first_name')
+            ->add('lastName', 'last_name')
         ;
     }
 }
 
-$originalDestination = [
-    'first_name' => 'TBD',
-    'last_name' => 'TBD'
+$source = [
+    'first_name' => 'Test First',
+    'last_name' => 'Test Last'
 ];
 
-$source = [
-    'fname' => 'Test First',
-    'lname' => 'Test Last'
-];
+$destination = new User();
 
 $mapper = new Mapper();
 $context = new MyContext();
 
-$updatedDestination = $mapper->map($originalDestination, $source, $context);
-var_dump($updatedDestination);
+$destination = $mapper->map($destination, $source, $context);
+var_dump($destination);
 /*
-array(2) {
-  'first_name' =>
+class User#2 (2) {
+  public $firstName =>
   string(10) "Test First"
-  'last_name' =>
+  public $lastName =>
   string(9) "Test Last"
 }
 */
