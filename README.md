@@ -18,10 +18,13 @@ Alternatively, you can clone/download this repository and install the package ma
 
 Basic Usage
 ===========
-There are three basic parts to the library: the mapper, mappings, and contexts. A context object exists to contain rules
-for an individual mapping use-case, for example: mapping user input to a data object or mapping an entity to a view
-model. A mapping object is effectively a rule that determines how data is mapped from one field to another within a
-given context. Finally, the mapper ties it all together and ensures that the proper mappings are executed from the
+There are three basic parts to the library: the mapper, mappings, and contexts.
+
+- A context object exists to contain rules for an individual mapping use-case, for example: mapping user input to a
+data object or mapping an entity to a view model.
+- A mapping object is effectively a rule that determines how data is mapped from one field to another within a given
+context.
+- Finally, the mapper ties it all together and ensures that the proper mappings are executed from the
 source data to the destination.
 
 Without further introduction, here is a simple example that maps from an input array to a User class. For more advanced
