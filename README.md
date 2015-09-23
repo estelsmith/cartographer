@@ -316,7 +316,36 @@ array(2) {
 
 Resolver Mapping
 ----------------
-TODO.
+The ```ResolverMapping``` class allows for the use of [Value Resolvers](#user-content-value-resolvers) to map data to a
+destination.
+
+```php
+class FullNameResolver implements ValueResolverInterface
+{
+    public function resolve($source)
+    {
+        return $source['fname'] . ' ' . $source['lname'];
+    }
+}
+
+$source = [
+    'fname' => 'First',
+    'lname' => 'Last'
+];
+
+$destination = [];
+
+$mapping = new ResolverMapping(new ArrayReference('name'), new FullNameResolver());
+
+$destination = $mapping->map($destination, $source);
+var_dump($destination);
+/*
+array(1) {
+  'name' =>
+  string(10) "First Last"
+}
+*/
+```
 
 Value Resolvers
 ===============
