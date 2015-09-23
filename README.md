@@ -281,7 +281,38 @@ array(1) {
 
 Embedded Mapping
 ----------------
-TODO.
+The ```EmbeddedMapping``` class allows for mapping embedded data structures to the destination. When constructing the
+```EmbeddedMapping``` class, the source field comes first followed by a map describing how the embedded structure will
+be mapped to the destination.
+
+```php
+$source = [
+    'name' => [
+        'fname' => 'First',
+        'lname' => 'Last'
+    ]
+];
+
+$destination = [];
+
+$mapping = new EmbeddedMapping(new ArrayReference('name'), (new Map())
+    ->from(Map::REF_ARRAY)
+    ->to(Map::REF_ARRAY)
+    ->add('first_name', 'fname')
+    ->add('last_name', 'lname')
+);
+
+$destination = $mapping->map($destination, $source);
+var_dump($destination);
+/*
+array(2) {
+  'first_name' =>
+  string(5) "First"
+  'last_name' =>
+  string(4) "Last"
+}
+*/
+```
 
 Resolver Mapping
 ----------------
