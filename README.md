@@ -381,7 +381,13 @@ To use a value resolver inside of a map, simply add it using the ```Map::addReso
 
 Want to contribute?
 ===================
-TODO.
+If you would like to contribute to this library, you can do so in a couple of ways:
+
+- Submit issues for bugs or functionality that would improve the project.
+- Submit a pull request for new functionality.
+- Update any documentation that appears to be lacking.
+
+When submitting pull requests, please make sure functionality is covered by unit tests, and that all of the tests pass.
 
 License
 =======
