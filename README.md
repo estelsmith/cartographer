@@ -42,11 +42,12 @@ class MyContext implements ContextInterface
 {
     public function getMap()
     {
-        return (new Map())
-            ->from(Map::REF_ARRAY)
-            ->to(Map::REF_CLASS_PROPERTIES)
+        return (new MapBuilder())
+            ->from(MapBuilder::REF_ARRAY)
+            ->to(MapBuilder::REF_CLASS_PROPERTIES)
             ->add('firstName', 'first_name')
             ->add('lastName', 'last_name')
+            ->getMap()
         ;
     }
 }
@@ -86,11 +87,12 @@ class MyContext implements ContextInterface
 {
     public function getMap()
     {
-        return (new Map())
-            ->from(Map::REF_ARRAY)
-            ->to(Map::REF_ARRAY)
+        return (new MapBuilder())
+            ->from(MapBuilder::REF_ARRAY)
+            ->to(MapBuilder::REF_ARRAY)
             ->add('first_name', 'fname')
             ->add('last_name', 'lname')
+            ->getMap()
         ;
     }
 }
@@ -309,11 +311,12 @@ $source = [
 
 $destination = [];
 
-$mapping = new EmbeddedMapping(new ArrayReference('name'), (new Map())
-    ->from(Map::REF_ARRAY)
-    ->to(Map::REF_ARRAY)
+$mapping = new EmbeddedMapping(new ArrayReference('name'), (new MapBuilder())
+    ->from(MapBuilder::REF_ARRAY)
+    ->to(MapBuilder::REF_ARRAY)
     ->add('first_name', 'fname')
     ->add('last_name', 'lname')
+    ->getMap()
 );
 
 $destination = $mapping->map($destination, $source);
@@ -386,7 +389,7 @@ var_dump($result);
 // string(10) "First Last"
 ```
 
-To use a value resolver inside of a map, simply add it using the ```Map::addResolver()``` method.
+To use a value resolver inside of a map, simply add it using the ```MapBuilder::addResolver()``` method.
 ```php
 (new Map())
     ->addResolver('full_name', new FullNameResolver())
