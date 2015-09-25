@@ -451,7 +451,8 @@ The ```add()``` method simply creates a new [Mapping](#user-content-mapping) usi
 ;
 
 // add() creates a mapping equivalent to:
-// new Mapping(new ArrayReference('first_name'), new ArrayReference('fname'))
+
+new Mapping(new ArrayReference('first_name'), new ArrayReference('fname'))
 ```
 
 The ```addEmbedded()``` method creates an [Embedded Mapping](#user-content-embedded-mapping) using the determined
@@ -465,13 +466,13 @@ reference types.
     )
 ;
 
-/* addEmbedded() creates an embedded mapping equivalent to:
- * new EmbeddedMapping(new ArrayReference('name'), (new MapBuilder())
- *     ->add('first_name', 'fname')
- *     ->add('last_name', 'lname')
- *     ->getMap()
- * )
- */
+// addEmbedded() creates an embedded mapping equivalent to:
+
+new EmbeddedMapping(new ArrayReference('name'), (new MapBuilder())
+    ->add('first_name', 'fname')
+    ->add('last_name', 'lname')
+    ->getMap()
+)
 ```
 
 The ```addResolver()``` method creates a [Resolver Mapping](#user-content-resolver-mapping) using the determined
@@ -482,7 +483,8 @@ reference types.
 ;
 
 // addResolver() creates a mapping equivalent to:
-// new ResolverMapping(new ArrayReference('full_name'), new FullNameResolver())
+
+new ResolverMapping(new ArrayReference('full_name'), new FullNameResolver())
 ```
 
 Finally, the ```addMapping``` method simply adds a custom user-defined mapping.
