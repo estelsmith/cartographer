@@ -423,10 +423,14 @@ The Map Builder
 To ease the creation of maps within a context, the library comes with a ```MapBuilder``` class that provides a simple,
 fluent interface to build a map.
 
+Defining default reference types
+--------------------------------
 The ```MapBuilder``` class allows you to designate the default [reference types](#user-content-references) using the
 ```from()``` and ```to()``` methods. These methods accept the ```MapBuilder``` constants ```REF_ARRAY```,
 ```REF_CLASS_PROPERTIES```, and ```REF_CLASS_MUTATORS``` respectively. If any values other than the previously mentioned
 constants are used, an ```InvalidReferenceTypeException``` is thrown.
+
+If the ```from()``` and ```to()``` methods are not called, then the ```REF_ARRAY``` reference type is assumed for both.
 
 ```php
 (new MapBuilder())
@@ -435,7 +439,43 @@ constants are used, an ```InvalidReferenceTypeException``` is thrown.
 ;
 ```
 
-TODO.
+Adding Mappings
+---------------
+There are methods on the ```MapBuilder``` class that allows for the addition of pre-built mapping types, as well
+as the ability to add custom mappings.
+
+The ```add()``` method simply creates a new [Mapping](#user-content-mapping) using the determined reference types.
+```php
+(new MapBuilder())
+    ->add('first_name', 'fname')
+;
+
+// add() creates a mapping equivalent to:
+// new Mapping(new ArrayReference('first_name'), new ArrayReference('fname'))
+```
+
+The ```addEmbedded()``` method creates an [Embedded Mapping](#user-content-embedded-mapping) using the determined
+reference types.
+```php
+(new MapBuilder())
+    ->addEmbedded('name', (new MapBuilder())
+        ->add('first_name', 'fname')
+        ->add('last_name', 'lname')
+        ->getMap()
+    )
+;
+
+/* addEmbedded() creates an embedded mapping equivalent to:
+ * new EmbeddedMapping(new ArrayReference('name'), (new MapBuilder())
+ *     ->add('first_name', 'fname')
+ *     ->add('last_name', 'lname')
+ *     ->getMap()
+ * )
+ */
+```
+
+Building the Map
+----------------
 
 Want to contribute?
 ===================
