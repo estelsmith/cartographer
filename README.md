@@ -418,6 +418,25 @@ var_dump($result);
 // string(10) "First Last"
 ```
 
+The Map Builder
+===============
+To ease the creation of maps within a context, the library comes with a ```MapBuilder``` class that provides a simple,
+fluent interface to build a map.
+
+The ```MapBuilder``` class allows you to designate the default [reference types](#user-content-references) using the
+```from()``` and ```to()``` methods. These methods accept the ```MapBuilder``` constants ```REF_ARRAY```,
+```REF_CLASS_PROPERTIES```, and ```REF_CLASS_MUTATORS``` respectively. If any values other than the previously mentioned
+constants are used, an ```InvalidReferenceTypeException``` is thrown.
+
+```php
+(new MapBuilder())
+    ->from(MapBuilder::REF_ARRAY)
+    ->to(Mapbuilder::REF_CLASS_MUTATORS)
+;
+```
+
+TODO.
+
 Want to contribute?
 ===================
 If you would like to contribute to this library, you can do so in a couple of ways:
