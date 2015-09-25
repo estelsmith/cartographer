@@ -418,13 +418,6 @@ var_dump($result);
 // string(10) "First Last"
 ```
 
-To use a value resolver inside of a map, simply add it using the ```MapBuilder::addResolver()``` method.
-```php
-(new Map())
-    ->addResolver('full_name', new FullNameResolver())
-;
-```
-
 Want to contribute?
 ===================
 If you would like to contribute to this library, you can do so in a couple of ways:
