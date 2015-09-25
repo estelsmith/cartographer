@@ -223,7 +223,36 @@ class User#3 (2) {
 If the default getters and setters are not satisfactory, you can change the methods that are called via the reference's
 constructor.
 ```php
+class User
+{
+    private $firstName;
+
+    public function retrieveFirstName()
+    {
+        return $this->firstName;
+    }
+
+    public function addFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
+}
+
 $reference = new MutatorReference('first_name', 'retrieveFirstName', 'addFirstName');
+
+$user = (new User())
+    ->addFirstName('Test First')
+;
+
+// calls $user->addFirstName('Changed First')
+$reference->setValue($user, 'Changed First');
+
+// calls $user->retrieveFirstName()
+$value = $reference->getValue($user);
+
+var_dump($value);
+// string(13) "Changed First"
 ```
 
 Property References
