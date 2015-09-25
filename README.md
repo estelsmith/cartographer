@@ -2,9 +2,9 @@ Cartographer
 ============
 Cartographer is a php library that provides the ability to transform data from one type into another type.
 
-[![Build Status](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/badges/build.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/build-status/master)
-[![Code Coverage](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/cascademedia/cartographer/badges/build.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/cartographer/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/cascademedia/cartographer/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/cartographer/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cascademedia/cartographer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/cartographer/?branch=master)
 
 Installation
 ============
