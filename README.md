@@ -421,7 +421,8 @@ var_dump($result);
 The Map Builder
 ===============
 To ease the creation of maps within a context, the library comes with a ```MapBuilder``` class that provides a simple,
-fluent interface to build a map.
+fluent interface to build a map. The ```MapBuilder``` is built to solve most use cases so that the user should rarely
+have to manually create mappings.
 
 Defining default reference types
 --------------------------------
