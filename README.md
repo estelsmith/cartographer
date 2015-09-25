@@ -1,6 +1,6 @@
-PHP Object Mapper
-=================
-The php-object-mapper library provides the ability to transform data from one type into another type.
+Cartographer
+============
+Cartographer is a php library that provides the ability to transform data from one type into another type.
 
 [![Build Status](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/badges/build.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/build-status/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cascademedia/php-object-mapper/?branch=master)
@@ -8,10 +8,10 @@ The php-object-mapper library provides the ability to transform data from one ty
 
 Installation
 ============
-To install php-object-mapper, simply require the library by executing the following composer command.
+To install Cartographer, simply require the library by executing the following composer command.
 
 ```
-$ composer require cascademedia/php-object-mapper @stable
+$ composer require cascademedia/cartographer @stable
 ```
 
 Alternatively, you can clone/download this repository and install the package manually.
