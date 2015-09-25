@@ -474,8 +474,44 @@ reference types.
  */
 ```
 
+The ```addResolver()``` method creates a [Resolver Mapping](#user-content-resolver-mapping) using the determined
+reference types.
+```php
+(new MapBuilder())
+    ->addResolver('full_name', new FullNameResolver())
+;
+
+// addResolver() creates a mapping equivalent to:
+// new ResolverMapping(new ArrayReference('full_name'), new FullNameResolver())
+```
+
+Finally, the ```addMapping``` method simply adds a custom user-defined mapping.
+```php
+(new MapBuilder())
+    ->addMapping(new Mapping(new ArrayReference('first_name'), new ArrayReference('fname')))
+;
+```
+
 Building the Map
 ----------------
+Once all mappings have been added into the ```MapBuilder```, it's time to generate a ```Map``` that can be used within
+a context. The ```getMap()``` method generates a new ```Map``` for our uses.
+
+```php
+(new MapBuilder())
+    ->add('first_name', 'fname')
+    ->add('last_name', 'lname')
+    ->getMap()
+;
+
+// is equivalent to:
+
+new Map([
+    new Mapping(new ArrayReference('first_name'), new ArrayReference('fname')),
+    new Mapping(new ArrayReference('last_name'), new ArrayReference('lname'))
+]);
+
+```
 
 Want to contribute?
 ===================
