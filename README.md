@@ -427,6 +427,35 @@ var_dump($result);
 // string(11) "1First Last"
 ```
 
+Callable Value Resolver
+-----------------------
+The library comes with a flexible ```CallableValueResolver``` class out-of-the-box, allowing value resolvers to be
+defined without the need to define resolver classes.
+
+```php
+$destination = [
+    'fname' => '1First'
+];
+
+$source = [
+    'lname' => 'Last'
+];
+
+$resolver = new CallableResolver(function ($source, $destination) {
+    $firstName = $destination['fname'];
+
+    if (array_key_exists('fname', $source)) {
+        $firstName = $source['fname'];
+    }
+
+    return $firstName . ' ' . $source['lname'];
+});
+
+$result = $resolver->resolve($source, $destination);
+var_dump($result);
+// string(11) "1First Last"
+```
+
 The Map Builder
 ===============
 To ease the creation of maps within a context, the library comes with a ```MapBuilder``` class that provides a simple,
