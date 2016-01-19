@@ -29,6 +29,9 @@ class ResolverMapping implements MappingInterface
 
     public function map($destination, $source)
     {
-        return $this->destinationReference->setValue($destination, $this->valueResolver->resolve($source));
+        return $this->destinationReference->setValue(
+            $destination,
+            $this->valueResolver->resolve($source, $destination)
+        );
     }
 }

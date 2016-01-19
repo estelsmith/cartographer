@@ -40,7 +40,7 @@ class ResolverMappingTest extends \PHPUnit_Framework_TestCase
         $resolver
             ->expects($this->once())
             ->method('resolve')
-            ->with($source)
+            ->with($source, $destination)
             ->willReturn($source['test'])
         ;
 

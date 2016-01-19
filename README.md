@@ -368,7 +368,7 @@ destination.
 ```php
 class FullNameResolver implements ValueResolverInterface
 {
-    public function resolve($source)
+    public function resolve($source, $destination)
     {
         return $source['fname'] . ' ' . $source['lname'];
     }
@@ -401,21 +401,30 @@ value resolver allows for arbitrary logic in order to map a value.
 ```php
 class FullNameResolver implements ValueResolverInterface
 {
-    public function resolve($source)
+    public function resolve($source, $destination)
     {
-        return $source['fname'] . ' ' . $source['lname'];
+        $firstName = $destination['fname'];
+    
+        if (array_key_exists('fname', $source)) {
+            $firstName = $source['fname'];
+        }
+    
+        return $firstName . ' ' . $source['lname'];
     }
 }
 
+$destination = [
+    'fname' => '1First'
+];
+
 $source = [
-    'fname' => 'First',
     'lname' => 'Last'
 ];
 
 $resolver = new FullNameResolver();
-$result = $resolver->resolve($source);
+$result = $resolver->resolve($source, $destination);
 var_dump($result);
-// string(10) "First Last"
+// string(11) "1First Last"
 ```
 
 The Map Builder
